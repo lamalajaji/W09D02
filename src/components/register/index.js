@@ -1,12 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [passowrd, setPassword] = useState("");
-  const [token, setToken] = useState("");
+
+
+
+const state = useSelector((state)=> {
+  return{
+    token: state.Users.token
+  }
+})
 
   const signup = async () => {
     try {
@@ -20,14 +28,11 @@ function Register() {
     }
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setToken(token);
-  }, []);
+  
 
   return (
     <div className="App">
-      {!token ? (
+      {!state.token ? (
         <div>
           <h1> SignUp</h1>
 

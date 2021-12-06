@@ -10,7 +10,6 @@ const  navigate = useNavigate();
 const dispatch = useDispatch;
 const [email, setEmail] = useState("");
 const [passowrd, setPassword] = useState("");
-const [token, setToken] = useState("");
 
 
 const state = useSelector((state)=> {

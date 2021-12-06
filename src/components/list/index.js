@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 const List = () => {
   const dispatch = useDispatch;
-  const [token, setToken] = useState("");
   const [todos, setTodos] = useState([]);
   const [task, setTask] = useState("");
 
