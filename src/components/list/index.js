@@ -1,11 +1,26 @@
 import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 
 const List = () => {
+  const dispatch = useDispatch;
   const [token, setToken] = useState("");
   const [todos, setTodos] = useState([]);
   const [task, setTask] = useState("");
+
+
+const state = useSelector((state)=> {
+  return {
+    token : state.Users.token
+  }
+})
+
+useEffect(()=> {
+  getAllTasks(state.token)
+},[]);
+
 
   ///// display all todos list
   const getAllTasks = async (token) => {
