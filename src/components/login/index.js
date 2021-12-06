@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signIn } from "../../reducers/users";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
 function Login() {
 const  navigate = useNavigate();
+const dispatch = useDispatch;
 const [email, setEmail] = useState("");
 const [passowrd, setPassword] = useState("");
 const [token, setToken] = useState("");
 
-useEffect(() => {
-  const token = localStorage.getItem("token");
-  setToken(token);
-}, []);
 
-console.log(process.env.REACT_APP_BASE_URL);
+const state = useSelector((state)=> {
+  return {
+    token : state.Users.token
+  }
+})
+
+
+
+// console.log(process.env.REACT_APP_BASE_URL);
 
 const login = async() => {
   try {
@@ -22,8 +29,11 @@ const login = async() => {
       email,
       passowrd,
     });
-localStorage.setItem("token" , result.data.token)
-localStorage.setItem("role", result.data.result.role);
+dispatch(
+  signIn({role : result.data.result.role,
+  token : result.data.token
+  })
+)
 
 navigate("/list");
 console.log(result);
@@ -40,7 +50,7 @@ console.log(result);
 
   return (
     <div className="App">
-      {!token ? (
+      {!state.token ? (
         <div className="form">
           <h1>Login</h1>
 
