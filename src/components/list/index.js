@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const List = () => {
   const [token, setToken] = useState("");
