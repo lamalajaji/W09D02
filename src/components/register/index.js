@@ -57,7 +57,7 @@ const state = useSelector((state)=> {
       ) : (
         <h1>
           {" "}
-          You Already Have an account , login <Link to="/"> here </Link>
+          You Already Have an account ,<Link to="/"> Login here </Link>
         </h1>
       )}
     </div>
