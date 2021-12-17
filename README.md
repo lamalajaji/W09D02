@@ -9,6 +9,6 @@ this app running locally :  http://localhost:3000
 
 # UML Diagram
 
-![uml]("./diagrams/uml.png")
+![uml](./diagrams/uml.png)
 
 
